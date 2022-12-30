@@ -6,7 +6,32 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import Diagram from "./diagrams";
 import Sticker from "./sticker";
 
-const ValuesCard = ({ condition, value }) => (
+// function that passes a comment and returns a color
+const activeColor = (comment) => {
+  if (comment === "Normal") {
+    return "#1976d2";
+  } else if (comment === "High") {
+    return "#b71c1c";
+  } else if (comment === "Low") {
+    return "#e65100";
+  } else {
+    return "#4a148c";
+  }
+};
+
+const inactiveColor = (comment) => {
+  if (comment === "Normal") {
+    return "#90caf9";
+  } else if (comment === "High") {
+    return "#ef9a9a";
+  } else if (comment === "Low") {
+    return "#ffcc80";
+  } else {
+    return "#ce93d8";
+  }
+};
+
+const ValuesCard = ({ condition, value, comment }) => (
   <View style={styles.mainCardView}>
     {condition === "Air" ? (
       <View style={styles.container}>
@@ -26,7 +51,7 @@ const ValuesCard = ({ condition, value }) => (
           </Text>
         </View>
         <View style={styles.element}>
-          <Diagram condition={value} />
+          <Diagram condition={value} comment={comment} />
         </View>
       </View>
     ) : condition === "Temperature" ? (
@@ -52,16 +77,16 @@ const ValuesCard = ({ condition, value }) => (
         </View>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <CircularProgress
-            value={25}
+            value={value}
             activeStrokeWidth={25}
             progressValueColor={"#5C5C5C"}
-            activeStrokeColor={"#596bad"}
-            inActiveStrokeColor={"#a1b1d6"}
+            activeStrokeColor={activeColor(comment)}
+            inActiveStrokeColor={inactiveColor(comment)}
             inActiveStrokeOpacity={0.5}
             inActiveStrokeWidth={20}
             valueSuffix={"°C"}
           />
-          <Sticker condition={"Bad"} />
+          <Sticker comment={comment} />
         </View>
       </View>
     ) : (
@@ -83,16 +108,16 @@ const ValuesCard = ({ condition, value }) => (
         </View>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <CircularProgress
-            value={10}
+            value={value}
             activeStrokeWidth={25}
             progressValueColor={"#5C5C5C"}
-            activeStrokeColor={"#61afb4"}
-            inActiveStrokeColor={"#acc2a5"}
+            activeStrokeColor={activeColor(comment)}
+            inActiveStrokeColor={inactiveColor(comment)}
             inActiveStrokeOpacity={0.5}
             inActiveStrokeWidth={20}
             valueSuffix={"%"}
           />
-          <Sticker condition={"Good"} />
+          <Sticker comment={comment} />
         </View>
       </View>
     )}

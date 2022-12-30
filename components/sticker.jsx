@@ -1,32 +1,32 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const Sticker = ({ condition }) => {
+const Sticker = ({ comment }) => {
   return (
     <View style={styles.container}>
-      {condition === "Good" ? (
+      {comment === "Healthy" ? (
         <View style={styles.goodsticker}>
-          <Text style={{ fontSize: 15, color: "#142c1c" }}>{condition}</Text>
+          <Text style={{ fontSize: 15, color: "#1b5e20" }}>{comment}</Text>
         </View>
-      ) : condition === "Normal" ? (
+      ) : comment === "Normal" ? (
         <View style={styles.normalsticker}>
-          <Text style={{ fontSize: 15, color: "#0c3578" }}>{condition}</Text>
+          <Text style={{ fontSize: 15, color: "#1976d2" }}>{comment}</Text>
         </View>
-      ) : condition === "Bad" ? (
-        <View style={styles.badsticker}>
-          <Text style={{ fontSize: 15, color: "#ae6070" }}>{condition}</Text>
-        </View>
-      ) : condition === "High" ? (
+      ) : comment === "Unhealthy" ? (
         <View style={styles.highsticker}>
-          <Text style={{ fontSize: 15, color: "#ae6070" }}>{condition}</Text>
+          <Text style={{ fontSize: 15, color: "#b71c1c" }}>{comment}</Text>
         </View>
-      ) : condition === "Low" ? (
+      ) : comment === "High" ? (
+        <View style={styles.highsticker}>
+          <Text style={{ fontSize: 15, color: "#b71c1c" }}>{comment}</Text>
+        </View>
+      ) : comment === "Low" ? (
         <View style={styles.lowsticker}>
-          <Text style={{ fontSize: 15, color: "#dcb456" }}>{condition}</Text>
+          <Text style={{ fontSize: 15, color: "#e65100" }}>{comment}</Text>
         </View>
       ) : (
-        <View style={styles.lowsticker}>
-          <Text style={{ fontSize: 15, color: "#dcb456" }}>{condition}</Text>
+        <View style={styles.norangesticker}>
+          <Text style={{ fontSize: 15, color: "#4a148c" }}>{comment}</Text>
         </View>
       )}
     </View>
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 30,
     borderRadius: 25,
-    backgroundColor: "#d4edda",
+    backgroundColor: "#a5d6a7",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -51,15 +51,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 30,
     borderRadius: 25,
-    backgroundColor: "#cce5ff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  badsticker: {
-    width: 100,
-    height: 30,
-    borderRadius: 25,
-    backgroundColor: "#f8d7da",
+    backgroundColor: "#90caf9",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -67,7 +59,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 30,
     borderRadius: 25,
-    backgroundColor: "#f8d7da",
+    backgroundColor: "#ef9a9a",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -75,7 +67,15 @@ const styles = StyleSheet.create({
     width: 100,
     height: 30,
     borderRadius: 25,
-    backgroundColor: "#fff3cd",
+    backgroundColor: "#ffe0b2",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  norangesticker: {
+    width: 100,
+    height: 30,
+    borderRadius: 25,
+    backgroundColor: "#ce93d8",
     alignItems: "center",
     justifyContent: "center",
   },

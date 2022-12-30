@@ -45,13 +45,21 @@ const HomeScreen = ({ navigation }) => {
         >
           <CurrentDate />
           <View style={styles.cardcontainer}>
-            <ValuesCard condition={"Air"} value={"Normal"} />
+            <ValuesCard
+              condition={"Air"}
+              value={"Healthy"}
+              comment={"Healthy"}
+            />
           </View>
           <View style={styles.cardcontainer}>
-            <ValuesCard condition={"Temperature"} value={20} />
+            <ValuesCard
+              condition={"Temperature"}
+              value={24}
+              comment={"Normal"}
+            />
           </View>
           <View style={styles.cardcontainer}>
-            <ValuesCard condition={"Humidity"} value={35} />
+            <ValuesCard condition={"Humidity"} value={35} comment={"Low"} />
           </View>
         </ScrollView>
       )}

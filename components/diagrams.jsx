@@ -1,15 +1,15 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Image } from "react-native";
 import Sticker from "./sticker";
 
-const Diagram = ({ condition }) => {
+const Diagram = ({ condition, comment }) => {
   return (
     <View
       style={{
         flex: 1,
       }}
     >
-      {condition === "Good" ? (
+      {condition === "Healthy" ? (
         <View
           style={{
             flexDirection: "row",
@@ -21,7 +21,7 @@ const Diagram = ({ condition }) => {
               width: 100,
               height: 100,
               borderRadius: 50,
-              backgroundColor: "#2EFF2E",
+              backgroundColor: "#388e3c",
               alignItems: "center",
               justifyContent: "center",
             }}
@@ -34,7 +34,7 @@ const Diagram = ({ condition }) => {
               }}
             />
           </View>
-          <Sticker condition="Healthy" />
+          <Sticker comment={comment} />
         </View>
       ) : condition === "Normal" ? (
         <View
@@ -49,7 +49,7 @@ const Diagram = ({ condition }) => {
               width: 100,
               height: 100,
               borderRadius: 50,
-              backgroundColor: "#FFFF2E",
+              backgroundColor: "#1976d2",
               alignItems: "center",
               justifyContent: "center",
             }}
@@ -62,7 +62,7 @@ const Diagram = ({ condition }) => {
               }}
             />
           </View>
-          <Sticker condition="Normal" />
+          <Sticker comment={comment} />
         </View>
       ) : (
         <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -71,7 +71,7 @@ const Diagram = ({ condition }) => {
               width: 100,
               height: 100,
               borderRadius: 50,
-              backgroundColor: "#FF2E2E",
+              backgroundColor: "#d32f2f",
               alignItems: "center",
               justifyContent: "center",
             }}
@@ -84,7 +84,7 @@ const Diagram = ({ condition }) => {
               }}
             />
           </View>
-          <Sticker condition="Unhealthy" />
+          <Sticker comment={comment} />
         </View>
       )}
     </View>
