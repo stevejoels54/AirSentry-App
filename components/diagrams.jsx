@@ -1,13 +1,12 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
+import Sticker from "./sticker";
 
 const Diagram = ({ condition }) => {
   return (
     <View
       style={{
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "space-around",
+        flex: 1,
       }}
     >
       {condition === "Good" ? (
@@ -35,15 +34,14 @@ const Diagram = ({ condition }) => {
               }}
             />
           </View>
-          <Text style={{ marginLeft: 10, fontWeight: "bold", fontSize: 25 }}>
-            Good
-          </Text>
+          <Sticker condition="Healthy" />
         </View>
       ) : condition === "Normal" ? (
         <View
           style={{
             flexDirection: "row",
             alignItems: "center",
+            justifyContent: "space-around",
           }}
         >
           <View
@@ -64,9 +62,7 @@ const Diagram = ({ condition }) => {
               }}
             />
           </View>
-          <Text style={{ marginLeft: 10, fontWeight: "bold", fontSize: 25 }}>
-            Normal
-          </Text>
+          <Sticker condition="Normal" />
         </View>
       ) : (
         <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -88,9 +84,7 @@ const Diagram = ({ condition }) => {
               }}
             />
           </View>
-          <Text style={{ marginLeft: 10, fontWeight: "bold", fontSize: 25 }}>
-            Bad
-          </Text>
+          <Sticker condition="Unhealthy" />
         </View>
       )}
     </View>

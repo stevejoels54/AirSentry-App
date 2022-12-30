@@ -1,38 +1,75 @@
 // simple component to display the home screen
 import React from "react";
-import { View, Text, StyleSheet, Button, ScrollView } from "react-native";
+import { isEmpty } from "lodash";
+import {
+  View,
+  StyleSheet,
+  ScrollView,
+  ActivityIndicator,
+  RefreshControl,
+} from "react-native";
 import ValuesCard from "../components/valuesCard";
 import CurrentDate from "../components/currentDate";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import appActions from "../stateConfig/actions";
+import { useState } from "react";
 
 const HomeScreen = ({ navigation }) => {
+  const [refreshing, setRefreshing] = useState(false);
+  const dispatch = useDispatch();
+  const values = useSelector((state) => state.values);
+  const loading = useSelector((state) => state.conditionValuesLoading);
+  const error = useSelector((state) => state.conditionValuesError);
+
+  useEffect(() => {
+    if (isEmpty(values)) {
+      dispatch(appActions.getConditionValues());
+    }
+  }, [values]);
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    dispatch(appActions.getConditionValues());
+  };
+
   return (
-    <ScrollView>
-      <View>
-        <CurrentDate />
-      </View>
-      <View style={styles.container}>
-        <ValuesCard condition={"Air"} value={"Normal"} />
-      </View>
-      <View style={styles.container}>
-        <ValuesCard condition={"Temperature"} value={50} />
-      </View>
-      <View style={styles.container}>
-        <ValuesCard condition={"Humidity"} value={75} />
-      </View>
-    </ScrollView>
+    <View style={styles.container}>
+      {loading && !refreshing ? (
+        <ActivityIndicator size="large" color="#0000ff" />
+      ) : (
+        <ScrollView
+          refreshControl={
+            <RefreshControl refreshing={loading} onRefresh={onRefresh} />
+          }
+        >
+          <CurrentDate />
+          <View style={styles.cardcontainer}>
+            <ValuesCard condition={"Air"} value={"Normal"} />
+          </View>
+          <View style={styles.cardcontainer}>
+            <ValuesCard condition={"Temperature"} value={20} />
+          </View>
+          <View style={styles.cardcontainer}>
+            <ValuesCard condition={"Humidity"} value={35} />
+          </View>
+        </ScrollView>
+      )}
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "center",
+  },
+  cardcontainer: {
+    flex: 1,
     direction: "column",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     marginTop: 10,
     marginBottom: 10,
-  },
-  text: {
-    fontSize: 30,
   },
 });
 
