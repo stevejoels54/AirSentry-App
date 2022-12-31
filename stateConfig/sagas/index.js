@@ -6,7 +6,8 @@ function* getConditionValues() {
   try {
     const result = yield axios({
       method: "GET",
-      url: "https://stevejoels.pythonanywhere.com/get_locations",
+      //   url: "https://stevejoels.pythonanywhere.com/get_locations",
+      url: "http://localhost:8000/current/",
     });
     yield put({
       type: appActions.GET_CONDITION_VALUES_SUCCESS,

@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Image } from "react-native";
-import Sticker from "./sticker";
+import AirSticker from "./airSticker";
 
 const Diagram = ({ condition, comment }) => {
   return (
@@ -9,7 +9,7 @@ const Diagram = ({ condition, comment }) => {
         flex: 1,
       }}
     >
-      {condition === "Healthy" ? (
+      {condition === "Good" ? (
         <View
           style={{
             flexDirection: "row",
@@ -21,7 +21,7 @@ const Diagram = ({ condition, comment }) => {
               width: 100,
               height: 100,
               borderRadius: 50,
-              backgroundColor: "#388e3c",
+              backgroundColor: "#1b5e20",
               alignItems: "center",
               justifyContent: "center",
             }}
@@ -34,9 +34,9 @@ const Diagram = ({ condition, comment }) => {
               }}
             />
           </View>
-          <Sticker comment={comment} />
+          <AirSticker comment={comment} />
         </View>
-      ) : condition === "Normal" ? (
+      ) : condition === "Moderate" ? (
         <View
           style={{
             flexDirection: "row",
@@ -62,16 +62,50 @@ const Diagram = ({ condition, comment }) => {
               }}
             />
           </View>
-          <Sticker comment={comment} />
+          <AirSticker comment={comment} />
         </View>
-      ) : (
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
+      ) : condition === "Unhealthy for Sensitive Groups" ? (
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-around",
+          }}
+        >
           <View
             style={{
               width: 100,
               height: 100,
               borderRadius: 50,
-              backgroundColor: "#d32f2f",
+              backgroundColor: "#caad2a",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Image
+              source={require("../assets/normal.png")}
+              style={{
+                width: "75%",
+                height: "75%",
+              }}
+            />
+          </View>
+          <AirSticker comment={comment} />
+        </View>
+      ) : condition === "Unhealthy" ? (
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-around",
+          }}
+        >
+          <View
+            style={{
+              width: 100,
+              height: 100,
+              borderRadius: 50,
+              backgroundColor: "#ef6c00",
               alignItems: "center",
               justifyContent: "center",
             }}
@@ -84,7 +118,57 @@ const Diagram = ({ condition, comment }) => {
               }}
             />
           </View>
-          <Sticker comment={comment} />
+          <AirSticker comment={comment} />
+        </View>
+      ) : condition === "Very Unhealthy" ? (
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-around",
+          }}
+        >
+          <View
+            style={{
+              width: 100,
+              height: 100,
+              borderRadius: 50,
+              backgroundColor: "#b71c1c",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Image
+              source={require("../assets/sad.png")}
+              style={{
+                width: "75%",
+                height: "75%",
+              }}
+            />
+          </View>
+          <AirSticker comment={comment} />
+        </View>
+      ) : (
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <View
+            style={{
+              width: 100,
+              height: 100,
+              borderRadius: 50,
+              backgroundColor: "#4a148c",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Image
+              source={require("../assets/sad.png")}
+              style={{
+                width: "75%",
+                height: "75%",
+              }}
+            />
+          </View>
+          <AirSticker comment={comment} />
         </View>
       )}
     </View>
