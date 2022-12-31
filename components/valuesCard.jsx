@@ -2,7 +2,7 @@ import * as React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import Diagram from "./diagrams";
+import Diagram from "./airIndicator";
 import TemperatureSticker from "./temperatureSticker";
 import HumiditySticker from "./humiditySticker";
 import ProgressIndicator from "./cicularProgress";
