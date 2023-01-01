@@ -7,8 +7,8 @@ import { View, Text, StyleSheet } from "react-native";
 const AirSticker = ({ comment }) => {
   return (
     <View style={styles.container}>
-      {comment === "Good" ? (
-        <View style={styles.goodsticker}>
+      {comment === "Healthy" ? (
+        <View style={styles.healthysticker}>
           <Text style={{ fontSize: 15, color: "#1b5e20", padding: 5 }}>
             {comment}
           </Text>
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  goodsticker: {
+  healthysticker: {
     width: 100,
     height: 30,
     borderRadius: 25,

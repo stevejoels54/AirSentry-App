@@ -9,7 +9,7 @@ const Diagram = ({ condition, comment }) => {
         flex: 1,
       }}
     >
-      {condition === "Good" ? (
+      {condition === "Healthy" ? (
         <View
           style={{
             flexDirection: "row",
@@ -83,7 +83,7 @@ const Diagram = ({ condition, comment }) => {
             }}
           >
             <Image
-              source={require("../assets/normal.png")}
+              source={require("../assets/neutral.png")}
               style={{
                 width: "75%",
                 height: "75%",
@@ -111,7 +111,7 @@ const Diagram = ({ condition, comment }) => {
             }}
           >
             <Image
-              source={require("../assets/sad.png")}
+              source={require("../assets/neutral.png")}
               style={{
                 width: "75%",
                 height: "75%",
