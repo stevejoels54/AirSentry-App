@@ -6,11 +6,14 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CustomAppBar from "../components/customAppBar";
 import HomeScreen from "../screens/homeScreen";
-import Profile from "../screens/profileScreen";
+import TrendScreen from "../screens/trendScreen";
+import SettingsScreen from "../screens/settingsScreen";
+import NotificationsScreen from "../screens/notificationsScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
-const ProfileStack = createNativeStackNavigator();
+const SettingsStack = createNativeStackNavigator();
+const TrendStack = createNativeStackNavigator();
 
 const HomeStackScreen = () => (
   <HomeStack.Navigator
@@ -18,18 +21,29 @@ const HomeStackScreen = () => (
       header: (props) => <CustomAppBar {...props} />,
     }}
   >
-    <HomeStack.Screen name="Home" component={HomeScreen} />
+    <HomeStack.Screen name="home" component={HomeScreen} />
+    <HomeStack.Screen name="notifications" component={NotificationsScreen} />
   </HomeStack.Navigator>
 );
 
-const ProfileStackScreen = () => (
-  <ProfileStack.Navigator
+const SettingsStackScreen = () => (
+  <SettingsStack.Navigator
     screenOptions={{
       header: (props) => <CustomAppBar {...props} />,
     }}
   >
-    <ProfileStack.Screen name="Profile" component={Profile} />
-  </ProfileStack.Navigator>
+    <SettingsStack.Screen name="settings" component={SettingsScreen} />
+  </SettingsStack.Navigator>
+);
+
+const TrendStackScreen = () => (
+  <TrendStack.Navigator
+    screenOptions={{
+      header: (props) => <CustomAppBar {...props} />,
+    }}
+  >
+    <TrendStack.Screen name="trend" component={TrendScreen} />
+  </TrendStack.Navigator>
 );
 
 const MyTabs = () => {
@@ -51,7 +65,7 @@ const MyTabs = () => {
         />
         <Tab.Screen
           name="Trend"
-          component={HomeStackScreen}
+          component={TrendStackScreen}
           options={{
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons
@@ -63,17 +77,8 @@ const MyTabs = () => {
           }}
         />
         <Tab.Screen
-          name="Profile"
-          component={ProfileStackScreen}
-          options={{
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="account" color={color} size={26} />
-            ),
-          }}
-        />
-        <Tab.Screen
           name="Settings"
-          component={ProfileStackScreen}
+          component={SettingsStackScreen}
           options={{
             tabBarIcon: ({ color }) => (
               <Ionicons name="settings-sharp" color={color} size={26} />

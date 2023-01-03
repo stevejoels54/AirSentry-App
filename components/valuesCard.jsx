@@ -7,7 +7,7 @@ import TemperatureSticker from "./temperatureSticker";
 import HumiditySticker from "./humiditySticker";
 import ProgressIndicator from "./cicularProgress";
 
-const ValuesCard = ({ condition, value, comment }) => (
+const ValuesCard = ({ condition, value, comment, updated }) => (
   <View style={styles.mainCardView}>
     {condition === "Air" ? (
       <View style={styles.container}>
@@ -26,9 +26,7 @@ const ValuesCard = ({ condition, value, comment }) => (
             Air Quality
           </Text>
         </View>
-        <View style={styles.element}>
-          <Diagram condition={value} comment={comment} />
-        </View>
+        <Diagram condition={value} comment={comment} updated={updated} />
       </View>
     ) : condition === "Temperature" ? (
       <View style={styles.container}>
@@ -57,7 +55,7 @@ const ValuesCard = ({ condition, value, comment }) => (
             value={value}
             comment={comment}
           />
-          <TemperatureSticker comment={comment} />
+          <TemperatureSticker comment={comment} updated={updated} />
         </View>
       </View>
     ) : (
@@ -83,7 +81,7 @@ const ValuesCard = ({ condition, value, comment }) => (
             value={value}
             comment={comment}
           />
-          <HumiditySticker comment={comment} />
+          <HumiditySticker comment={comment} updated={updated} />
         </View>
       </View>
     )}
@@ -116,11 +114,7 @@ const styles = StyleSheet.create({
   },
   title: {
     justifyContent: "center",
-  },
-  element: {
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    marginBottom: 10,
+    marginTop: 10,
   },
 });
 

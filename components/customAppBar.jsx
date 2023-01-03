@@ -9,19 +9,25 @@ const CustomAppBar = ({ navigation, back }) => {
   return (
     <Appbar.Header style={{ backgroundColor: "#fff" }}>
       {back ? <Appbar.BackAction onPress={navigation.goBack} /> : null}
-      {routeName === "Home" ? (
+      {routeName === "home" ? (
         <View style={styles.container}>
           <ActionBarImage />
           <Appbar.Action
             icon="bell"
-            onPress={() => navigation.navigate("Profile")}
+            onPress={() => navigation.navigate("notifications")}
           />
         </View>
       ) : null}
-      {routeName !== "Home" ? (
+      {routeName !== "home" ? (
         <Appbar.Content
           titleStyle={{ alignSelf: "center" }}
-          title={routeName}
+          title={
+            routeName === "trend"
+              ? "Trend"
+              : routeName === "notifications"
+              ? "Notifications"
+              : "Settings"
+          }
         />
       ) : null}
     </Appbar.Header>

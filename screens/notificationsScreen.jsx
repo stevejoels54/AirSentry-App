@@ -1,12 +1,11 @@
-// simple component to display the profile screen
 import React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 
-const ProfileScreen = ({ navigation }) => {
+const NotificationsScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Profile Screen</Text>
-      <Button title="Go to Home" onPress={() => navigation.navigate("Home")} />
+      <Text style={styles.text}>Notifications Screen</Text>
+      <Button title="Go to Home" onPress={() => navigation.navigate("home")} />
     </View>
   );
 };
@@ -22,4 +21,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProfileScreen;
+export default NotificationsScreen;

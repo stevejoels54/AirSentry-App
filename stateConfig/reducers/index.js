@@ -20,6 +20,23 @@ const appReducers = (state = initialState, action) => {
         conditionValuesLoading: false,
         conditionValuesError: action.payload,
       };
+    case appActions.GET_TREND_VALUES_REQUEST:
+      return {
+        ...state,
+        trendValuesLoading: true,
+      };
+    case appActions.GET_TREND_VALUES_SUCCESS:
+      return {
+        ...state,
+        trendValuesLoading: false,
+        trendValuesSuccess: action.payload,
+      };
+    case appActions.GET_TREND_VALUES_ERROR:
+      return {
+        ...state,
+        trendValuesLoading: false,
+        trendValuesError: action.payload,
+      };
     default:
       return state;
   }
