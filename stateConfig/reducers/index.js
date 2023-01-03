@@ -37,6 +37,24 @@ const appReducers = (state = initialState, action) => {
         trendValuesLoading: false,
         trendValuesError: action.payload,
       };
+    case appActions.GET_NOTIFICATIONS_REQUEST:
+      return {
+        ...state,
+        notificationsLoading: true,
+      };
+    case appActions.GET_NOTIFICATIONS_SUCCESS:
+      return {
+        ...state,
+        notificationsLoading: false,
+        notificationsSuccess: action.payload,
+      };
+    case appActions.GET_NOTIFICATIONS_ERROR:
+      return {
+        ...state,
+        notificationsLoading: false,
+        notificationsError: action.payload,
+      };
+
     default:
       return state;
   }

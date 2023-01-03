@@ -61,7 +61,12 @@ const ValuesCard = ({ condition, value, comment, updated }) => (
     ) : (
       <View style={styles.container}>
         <View style={styles.title}>
-          <Ionicons name="water" size={30} color="#171717" />
+          {/* <Ionicons name="water" size={30} color="#171717" /> */}
+          <MaterialCommunityIcons
+            name="water-percent"
+            size={30}
+            color="#171717"
+          />
           <Text
             style={{
               fontSize: 20,

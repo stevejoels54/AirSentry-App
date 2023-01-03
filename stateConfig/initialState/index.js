@@ -6,6 +6,10 @@ const initialState = {
   trendValuesLoading: false,
   trendValuesSuccess: {},
   trendValuesError: {},
+
+  notificationsLoading: false,
+  notificationsSuccess: {},
+  notificationsError: {},
 };
 
 export default initialState;
