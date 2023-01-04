@@ -5,6 +5,7 @@ import {
   ScrollView,
   RefreshControl,
   ActivityIndicator,
+  Text,
 } from "react-native";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -41,14 +42,18 @@ const NotificationsScreen = () => {
             <RefreshControl refreshing={loading} onRefresh={onRefresh} />
           }
         >
-          {data?.map((notification) => (
-            <Notification
-              key={notification.notification_id}
-              condition={notification.notification_type}
-              message={notification.notification_message}
-              time={notification.notification_time}
-            />
-          ))}
+          {isEmpty(data) ? (
+            <Text style={styles.text}>No Notifications</Text>
+          ) : (
+            data?.map((notification) => (
+              <Notification
+                key={notification?.notification_id}
+                condition={notification?.notification_type}
+                message={notification?.notification_message}
+                time={notification?.notification_timestamp}
+              />
+            ))
+          )}
         </ScrollView>
       )}
     </View>
@@ -61,7 +66,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   text: {
-    fontSize: 30,
+    fontSize: 25,
+    textAlign: "center",
+    marginTop: 20,
   },
 });
 

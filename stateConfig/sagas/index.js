@@ -6,7 +6,7 @@ function* getConditionValues() {
   try {
     const result = yield axios({
       method: "GET",
-      url: "http://localhost:8000/current/",
+      url: "https://stevejoels.pythonanywhere.com/current/",
     });
     yield put({
       type: appActions.GET_CONDITION_VALUES_SUCCESS,
@@ -24,7 +24,7 @@ function* getTrendValues() {
   try {
     const result = yield axios({
       method: "GET",
-      url: "http://localhost:8000/trends/",
+      url: "https://stevejoels.pythonanywhere.com/trends/",
     });
     yield put({
       type: appActions.GET_TREND_VALUES_SUCCESS,
@@ -42,7 +42,7 @@ function* getNotifications() {
   try {
     const result = yield axios({
       method: "GET",
-      url: "http://localhost:8000/notifications/",
+      url: "https://stevejoels.pythonanywhere.com/notifications/",
     });
     yield put({
       type: appActions.GET_NOTIFICATIONS_SUCCESS,
