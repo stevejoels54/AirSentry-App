@@ -1,12 +1,13 @@
 import { takeLatest, fork, put } from "redux-saga/effects";
 import axios from "axios";
 import appActions from "../actions";
+import { API_URL, DEVICE_ID } from "@env";
 
 function* getConditionValues() {
   try {
     const result = yield axios({
       method: "GET",
-      url: "https://stevejoels.pythonanywhere.com/current/",
+      url: `${API_URL}/readings/${DEVICE_ID}`,
     });
     yield put({
       type: appActions.GET_CONDITION_VALUES_SUCCESS,

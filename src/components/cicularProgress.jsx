@@ -61,6 +61,38 @@ const humidityInactiveColor = (comment) => {
   }
 };
 
+const coActiveColor = (comment) => {
+  if (comment === "Excellent") {
+    return "#1b5e20";
+  } else if (comment === "Good") {
+    return "#1976d2";
+  } else if (comment === "Moderate") {
+    return "#caad2a";
+  } else if (comment === "Unhealthy for Sensitive Groups") {
+    return "#ef6c00";
+  } else if (comment === "Unhealthy") {
+    return "#b71c1c";
+  } else {
+    return "#4a148c";
+  }
+};
+
+const coInactiveColor = (comment) => {
+  if (comment === "Excellent") {
+    return "#a5d6a7";
+  } else if (comment === "Good") {
+    return "#90caf9";
+  } else if (comment === "Moderate") {
+    return "#fff59d";
+  } else if (comment === "Unhealthy for Sensitive Groups") {
+    return "#ffcc80";
+  } else if (comment === "Unhealthy") {
+    return "#ffab91";
+  } else {
+    return "#ce93d8";
+  }
+};
+
 const ProgressIndicator = ({ condition, value, comment }) => {
   return (
     <CircularProgress
@@ -70,11 +102,15 @@ const ProgressIndicator = ({ condition, value, comment }) => {
       activeStrokeColor={
         condition === "Temperature"
           ? tempActiveColor(comment)
+          : condition === "Co"
+          ? coActiveColor(comment)
           : humidityActiveColor(comment)
       }
       inActiveStrokeColor={
         condition === "Temperature"
           ? tempInactiveColor(comment)
+          : condition === "Co"
+          ? coInactiveColor(comment)
           : humidityInactiveColor(comment)
       }
       inActiveStrokeOpacity={0.5}

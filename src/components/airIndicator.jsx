@@ -1,15 +1,15 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
-import AirSticker from "./airSticker";
+import AirSticker from "./stickers/airSticker";
 
-const Diagram = ({ condition, comment, updated }) => {
+const Diagram = ({ comment, updated }) => {
   return (
     <View
       style={{
         flex: 1,
       }}
     >
-      {condition === "Healthy" ? (
+      {comment === "Healthy" ? (
         <View
           style={{
             flexDirection: "row",
@@ -27,7 +27,7 @@ const Diagram = ({ condition, comment, updated }) => {
             }}
           >
             <Image
-              source={require("../assets/happy.png")}
+              source={require("../../assets/happy.png")}
               style={{
                 width: "75%",
                 height: "75%",
@@ -36,7 +36,7 @@ const Diagram = ({ condition, comment, updated }) => {
           </View>
           <AirSticker comment={comment} updated={updated} />
         </View>
-      ) : condition === "Moderate" ? (
+      ) : comment === "Moderate" ? (
         <View
           style={{
             flexDirection: "row",
@@ -53,7 +53,7 @@ const Diagram = ({ condition, comment, updated }) => {
             }}
           >
             <Image
-              source={require("../assets/normal.png")}
+              source={require("../../assets/normal.png")}
               style={{
                 width: "75%",
                 height: "75%",
@@ -62,7 +62,7 @@ const Diagram = ({ condition, comment, updated }) => {
           </View>
           <AirSticker comment={comment} updated={updated} />
         </View>
-      ) : condition === "Unhealthy for Sensitive Groups" ? (
+      ) : comment === "Unhealthy for Sensitive Groups" ? (
         <View
           style={{
             flexDirection: "row",
@@ -79,7 +79,7 @@ const Diagram = ({ condition, comment, updated }) => {
             }}
           >
             <Image
-              source={require("../assets/neutral.png")}
+              source={require("../../assets/neutral.png")}
               style={{
                 width: "75%",
                 height: "75%",
@@ -88,7 +88,7 @@ const Diagram = ({ condition, comment, updated }) => {
           </View>
           <AirSticker comment={comment} updated={updated} />
         </View>
-      ) : condition === "Unhealthy" ? (
+      ) : comment === "Unhealthy" ? (
         <View
           style={{
             flexDirection: "row",
@@ -105,7 +105,7 @@ const Diagram = ({ condition, comment, updated }) => {
             }}
           >
             <Image
-              source={require("../assets/neutral.png")}
+              source={require("../../assets/neutral.png")}
               style={{
                 width: "75%",
                 height: "75%",
@@ -114,7 +114,7 @@ const Diagram = ({ condition, comment, updated }) => {
           </View>
           <AirSticker comment={comment} updated={updated} />
         </View>
-      ) : condition === "Very Unhealthy" ? (
+      ) : comment === "Very Unhealthy" ? (
         <View
           style={{
             flexDirection: "row",
@@ -131,7 +131,7 @@ const Diagram = ({ condition, comment, updated }) => {
             }}
           >
             <Image
-              source={require("../assets/sad.png")}
+              source={require("../../assets/sad.png")}
               style={{
                 width: "75%",
                 height: "75%",
@@ -153,7 +153,7 @@ const Diagram = ({ condition, comment, updated }) => {
             }}
           >
             <Image
-              source={require("../assets/sad.png")}
+              source={require("../../assets/sad.png")}
               style={{
                 width: "75%",
                 height: "75%",

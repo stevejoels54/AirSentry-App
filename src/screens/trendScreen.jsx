@@ -6,14 +6,15 @@ import {
   ScrollView,
   RefreshControl,
   ActivityIndicator,
+  Text,
 } from "react-native";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import appActions from "../stateConfig/actions";
 import { useState } from "react";
-import AirChart from "../components/airChart";
-import TemperatureChart from "../components/temperatureChart";
-import HumidityChart from "../components/humidityChart";
+import AirChart from "../components/charts/airChart";
+import TemperatureChart from "../components/charts/temperatureChart";
+import HumidityChart from "../components/charts/humidityChart";
 
 const TrendScreen = () => {
   const [refreshing, setRefreshing] = useState(false);
@@ -43,21 +44,29 @@ const TrendScreen = () => {
             <RefreshControl refreshing={loading} onRefresh={onRefresh} />
           }
         >
-          <View style={styles.cardcontainer}>
-            <AirChart days={data?.air?.days} values={data?.air?.values} />
-          </View>
-          <View style={styles.cardcontainer}>
-            <TemperatureChart
-              days={data?.temperature?.days}
-              values={data?.temperature?.values}
-            />
-          </View>
-          <View style={styles.cardcontainer}>
-            <HumidityChart
-              days={data?.humidity?.days}
-              values={data?.humidity?.values}
-            />
-          </View>
+          {isEmpty(data) ? (
+            <Text style={styles.text}>
+              No Trends at the moment, try refreshing
+            </Text>
+          ) : (
+            <View>
+              <View style={styles.cardcontainer}>
+                <AirChart days={data?.air?.days} values={data?.air?.values} />
+              </View>
+              <View style={styles.cardcontainer}>
+                <TemperatureChart
+                  days={data?.temperature?.days}
+                  values={data?.temperature?.values}
+                />
+              </View>
+              <View style={styles.cardcontainer}>
+                <HumidityChart
+                  days={data?.humidity?.days}
+                  values={data?.humidity?.values}
+                />
+              </View>
+            </View>
+          )}
         </ScrollView>
       )}
     </View>

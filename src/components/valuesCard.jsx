@@ -1,11 +1,11 @@
 import * as React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import Ionicons from "react-native-vector-icons/Ionicons";
-import Diagram from "./airIndicator";
-import TemperatureSticker from "./temperatureSticker";
-import HumiditySticker from "./humiditySticker";
 import ProgressIndicator from "./cicularProgress";
+import Diagram from "./airIndicator";
+import TemperatureSticker from "./stickers/temperatureSticker";
+import HumiditySticker from "./stickers/humiditySticker";
+import CoSticker from "./stickers/coSticker";
 
 const ValuesCard = ({ condition, value, comment, updated }) => (
   <View style={styles.mainCardView}>
@@ -26,7 +26,7 @@ const ValuesCard = ({ condition, value, comment, updated }) => (
             Air Quality
           </Text>
         </View>
-        <Diagram condition={value} comment={comment} updated={updated} />
+        <Diagram comment={comment} updated={updated} />
       </View>
     ) : condition === "Temperature" ? (
       <View style={styles.container}>
@@ -58,10 +58,9 @@ const ValuesCard = ({ condition, value, comment, updated }) => (
           <TemperatureSticker comment={comment} updated={updated} />
         </View>
       </View>
-    ) : (
+    ) : condition === "Humidity" ? (
       <View style={styles.container}>
         <View style={styles.title}>
-          {/* <Ionicons name="water" size={30} color="#171717" /> */}
           <MaterialCommunityIcons
             name="water-percent"
             size={30}
@@ -87,6 +86,36 @@ const ValuesCard = ({ condition, value, comment, updated }) => (
             comment={comment}
           />
           <HumiditySticker comment={comment} updated={updated} />
+        </View>
+      </View>
+    ) : (
+      <View style={styles.container}>
+        <View style={styles.title}>
+          <MaterialCommunityIcons
+            name="cloud-outline"
+            size={30}
+            color="#171717"
+          />
+          <Text
+            style={{
+              fontSize: 20,
+              fontWeight: "bold",
+              textAlign: "center",
+              color: "#171717",
+              marginTop: 5,
+              marginBottom: 10,
+            }}
+          >
+            Carbon Monoxide
+          </Text>
+        </View>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <ProgressIndicator
+            condition={"Co"}
+            value={value || 0}
+            comment={comment}
+          />
+          <CoSticker comment={comment} updated={updated} />
         </View>
       </View>
     )}

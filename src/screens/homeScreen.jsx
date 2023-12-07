@@ -15,6 +15,7 @@ import { useSelector, useDispatch } from "react-redux";
 import appActions from "../stateConfig/actions";
 import { useState } from "react";
 import moment from "moment";
+import { getComment } from "../helpers/commets";
 
 // get the current date in format "2023-01-02T21:09:45.499927Z"
 const currentDate = moment().toISOString();
@@ -49,28 +50,42 @@ const HomeScreen = () => {
           <CurrentDate />
           <View style={styles.cardcontainer}>
             <ValuesCard
-              condition={isEmpty(data) ? "Air" : data?.air?.name}
-              value={isEmpty(data) ? "0" : data?.air?.comment}
-              comment={isEmpty(data) ? "No data" : data?.air?.comment}
-              updated={isEmpty(data) ? currentDate : data?.reading?.timestamp}
+              condition={"Air"}
+              value={isEmpty(data) ? "0" : data?.air}
+              comment={isEmpty(data) ? "No data" : getComment("air", data?.air)}
+              updated={isEmpty(data) ? currentDate : data?.timestamp?.$date}
             />
           </View>
           <View style={styles.cardcontainer}>
             <ValuesCard
-              condition={
-                isEmpty(data) ? "Temperature" : data?.temperature?.name
+              condition={"Temperature"}
+              value={isEmpty(data) ? "0" : data?.temperature}
+              comment={
+                isEmpty(data)
+                  ? "No data"
+                  : getComment("temperature", data?.temperature)
               }
-              value={isEmpty(data) ? "0" : data?.temperature?.value}
-              comment={isEmpty(data) ? "No data" : data?.temperature?.comment}
-              updated={isEmpty(data) ? currentDate : data?.reading?.timestamp}
+              updated={isEmpty(data) ? currentDate : data?.timestamp?.$date}
             />
           </View>
           <View style={styles.cardcontainer}>
             <ValuesCard
-              condition={isEmpty(data) ? "Humidity" : data?.humidity?.name}
-              value={isEmpty(data) ? "0" : data?.humidity?.value}
-              comment={isEmpty(data) ? "No data" : data?.humidity?.comment}
-              updated={isEmpty(data) ? currentDate : data?.reading?.timestamp}
+              condition={"Humidity"}
+              value={isEmpty(data) ? "0" : data?.humidity}
+              comment={
+                isEmpty(data)
+                  ? "No data"
+                  : getComment("humidity", data?.humidity)
+              }
+              updated={isEmpty(data) ? currentDate : data?.timestamp?.$date}
+            />
+          </View>
+          <View style={styles.cardcontainer}>
+            <ValuesCard
+              condition={"Co"}
+              value={isEmpty(data) ? "0" : data?.co}
+              comment={isEmpty(data) ? "No data" : getComment("co", data?.co)}
+              updated={isEmpty(data) ? currentDate : data?.timestamp?.$date}
             />
           </View>
         </ScrollView>
