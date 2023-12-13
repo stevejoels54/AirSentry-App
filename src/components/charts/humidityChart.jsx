@@ -1,6 +1,7 @@
 import { View, StyleSheet, Dimensions, Text } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import moment from "moment";
 
 const screenWidth = Dimensions.get("window").width * 0.82;
 
@@ -15,7 +16,7 @@ const HumidityChart = ({ averages = [] }) => {
     useShadowColorFromDataset: false, // optional
   };
   const data = {
-    labels: averages.map((day) => day?.day),
+    labels: averages.map((day) => moment(day?.day).format("MMM Do")),
     datasets: [
       {
         data: averages.map((day) => day?.humidity),

@@ -17,7 +17,6 @@ const CoChart = ({ averages = [] }) => {
   };
 
   const data = {
-    // labels: averages.map((day) => day?.day),
     labels: averages.map((day) => moment(day?.day).format("MMM Do")),
     datasets: [
       {

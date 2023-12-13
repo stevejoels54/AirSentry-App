@@ -1,10 +1,10 @@
 import { View, StyleSheet, Dimensions, Text } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import moment from "moment";
 
 const screenWidth = Dimensions.get("window").width * 0.82;
 
-// const AirChart = ({ days = [], values = [] }) => {
 const AirChart = ({ averages = [] }) => {
   const chartConfig = {
     backgroundColor: "#e26a00",
@@ -16,19 +16,8 @@ const AirChart = ({ averages = [] }) => {
     useShadowColorFromDataset: false, // optional
   };
 
-  // const data = {
-  //   labels: days,
-  //   datasets: [
-  //     {
-  //       data: values,
-  //       color: (opacity = 1) => `rgba(123, 31, 162, ${opacity})`, // optional
-  //       strokeWidth: 2, // optional
-  //     },
-  //   ],
-  // };
-
   const data = {
-    labels: averages.map((day) => day?.day),
+    labels: averages.map((day) => moment(day?.day).format("MMM Do")),
     datasets: [
       {
         data: averages.map((day) => day?.air),
