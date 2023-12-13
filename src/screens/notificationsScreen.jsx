@@ -50,9 +50,9 @@ const NotificationsScreen = () => {
             data?.map((notification) => (
               <Notification
                 key={notification?.notification_id}
-                condition={notification?.notification_type}
-                message={notification?.notification_message}
-                time={notification?.notification_timestamp}
+                condition={notification?.condition}
+                message={notification?.message}
+                time={notification?.timestamp?.$date}
               />
             ))
           )}

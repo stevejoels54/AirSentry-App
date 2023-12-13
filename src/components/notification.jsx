@@ -13,16 +13,30 @@ const Notification = ({ condition, message, time }) => {
           <Ionicons name="warning-outline" size={35} color="#f57c00" />
           <View style={styles.content}>
             <View style={styles.title}>
-              <Text style={{ fontSize: 16 }}>{condition}</Text>
-              {condition == "Air Quality" || condition == "Air" ? (
+              <Text style={{ fontSize: 16 }}>
+                {condition == "air"
+                  ? "Air Quality"
+                  : condition == "temperature"
+                  ? "Temperature"
+                  : condition == "co"
+                  ? "Carbon Monoxide"
+                  : "Humidity"}
+              </Text>
+              {condition == "air" ? (
                 <MaterialCommunityIcons
                   name="air-filter"
                   size={20}
                   color="#0d119e"
                 />
-              ) : condition == "Temperature" ? (
+              ) : condition == "temperature" ? (
                 <MaterialCommunityIcons
                   name="thermometer"
+                  size={20}
+                  color="#0d119e"
+                />
+              ) : condition == "co" ? (
+                <MaterialCommunityIcons
+                  name="cloud-outline"
                   size={20}
                   color="#0d119e"
                 />
