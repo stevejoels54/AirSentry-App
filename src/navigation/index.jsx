@@ -51,7 +51,7 @@ const MyTabs = () => {
     <NavigationContainer>
       <Tab.Navigator
         initialRouteName="Home"
-        activeColor="#61afb4"
+        activeColor="#4B7BF5"
         barStyle={{ backgroundColor: "#e0e7f4" }}
       >
         <Tab.Screen

@@ -41,6 +41,8 @@ const NotificationsScreen = () => {
           refreshControl={
             <RefreshControl refreshing={loading} onRefresh={onRefresh} />
           }
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
         >
           {isEmpty(data) ? (
             <Text style={styles.text}>No Notifications</Text>

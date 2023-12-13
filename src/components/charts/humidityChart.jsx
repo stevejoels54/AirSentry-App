@@ -4,7 +4,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 
 const screenWidth = Dimensions.get("window").width * 0.82;
 
-const HumidityChart = ({ days = [], values = [] }) => {
+const HumidityChart = ({ averages = [] }) => {
   const chartConfig = {
     backgroundColor: "#e26a00",
     backgroundGradientFrom: "#fff",
@@ -15,10 +15,10 @@ const HumidityChart = ({ days = [], values = [] }) => {
     useShadowColorFromDataset: false, // optional
   };
   const data = {
-    labels: days,
+    labels: averages.map((day) => day?.day),
     datasets: [
       {
-        data: values,
+        data: averages.map((day) => day?.humidity),
         color: (opacity = 1) => `rgba(245, 124, 0, ${opacity})`, // optional
         strokeWidth: 2, // optional
       },
@@ -40,7 +40,7 @@ const HumidityChart = ({ days = [], values = [] }) => {
           Humidity
         </Text>
         <View style={{ marginTop: 5 }}>
-          {days.length > 0 && values.length > 0 ? (
+          {averages.length > 0 ? (
             <LineChart
               data={data}
               width={screenWidth}

@@ -15,6 +15,7 @@ import { useState } from "react";
 import AirChart from "../components/charts/airChart";
 import TemperatureChart from "../components/charts/temperatureChart";
 import HumidityChart from "../components/charts/humidityChart";
+import CoChart from "../components/charts/coChart";
 
 const TrendScreen = () => {
   const [refreshing, setRefreshing] = useState(false);
@@ -43,6 +44,8 @@ const TrendScreen = () => {
           refreshControl={
             <RefreshControl refreshing={loading} onRefresh={onRefresh} />
           }
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
         >
           {isEmpty(data) ? (
             <Text style={styles.text}>
@@ -51,19 +54,16 @@ const TrendScreen = () => {
           ) : (
             <View>
               <View style={styles.cardcontainer}>
-                <AirChart days={data?.air?.days} values={data?.air?.values} />
+                <AirChart averages={data} />
               </View>
               <View style={styles.cardcontainer}>
-                <TemperatureChart
-                  days={data?.temperature?.days}
-                  values={data?.temperature?.values}
-                />
+                <TemperatureChart averages={data} />
               </View>
               <View style={styles.cardcontainer}>
-                <HumidityChart
-                  days={data?.humidity?.days}
-                  values={data?.humidity?.values}
-                />
+                <HumidityChart averages={data} />
+              </View>
+              <View style={styles.cardcontainer}>
+                <CoChart averages={data} />
               </View>
             </View>
           )}

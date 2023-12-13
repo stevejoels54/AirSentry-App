@@ -46,6 +46,8 @@ const HomeScreen = () => {
           refreshControl={
             <RefreshControl refreshing={loading} onRefresh={onRefresh} />
           }
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
         >
           <CurrentDate />
           <View style={styles.cardcontainer}>

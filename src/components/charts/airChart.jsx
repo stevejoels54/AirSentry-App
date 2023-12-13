@@ -3,7 +3,9 @@ import { LineChart } from "react-native-chart-kit";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 const screenWidth = Dimensions.get("window").width * 0.82;
-const AirChart = ({ days = [], values = [] }) => {
+
+// const AirChart = ({ days = [], values = [] }) => {
+const AirChart = ({ averages = [] }) => {
   const chartConfig = {
     backgroundColor: "#e26a00",
     backgroundGradientFrom: "#fff",
@@ -14,13 +16,24 @@ const AirChart = ({ days = [], values = [] }) => {
     useShadowColorFromDataset: false, // optional
   };
 
+  // const data = {
+  //   labels: days,
+  //   datasets: [
+  //     {
+  //       data: values,
+  //       color: (opacity = 1) => `rgba(123, 31, 162, ${opacity})`, // optional
+  //       strokeWidth: 2, // optional
+  //     },
+  //   ],
+  // };
+
   const data = {
-    labels: days,
+    labels: averages.map((day) => day?.day),
     datasets: [
       {
-        data: values,
-        color: (opacity = 1) => `rgba(123, 31, 162, ${opacity})`, // optional
-        strokeWidth: 2, // optional
+        data: averages.map((day) => day?.air),
+        color: (opacity = 1) => `rgba(123, 31, 162, ${opacity})`,
+        strokeWidth: 2,
       },
     ],
   };
@@ -41,7 +54,7 @@ const AirChart = ({ days = [], values = [] }) => {
           Air Quality
         </Text>
         <View style={{ marginTop: 5 }}>
-          {days.length > 0 && values.length > 0 ? (
+          {averages.length > 0 ? (
             <LineChart
               data={data}
               width={screenWidth}

@@ -25,7 +25,8 @@ function* getTrendValues() {
   try {
     const result = yield axios({
       method: "GET",
-      url: "https://stevejoels.pythonanywhere.com/trends/",
+      url: "http://127.0.0.1:5000/airsentry/api/v1/readings/averages/656726616ea4620e5f8b9ab9",
+      // url: `${API_URL}/readings/averages/${DEVICE_ID}`,
     });
     yield put({
       type: appActions.GET_TREND_VALUES_SUCCESS,

@@ -1,25 +1,28 @@
 import { View, StyleSheet, Dimensions, Text } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import moment from "moment";
 
 const screenWidth = Dimensions.get("window").width * 0.82;
-const CoChart = ({ days = [], values = [] }) => {
+
+const CoChart = ({ averages = [] }) => {
   const chartConfig = {
     backgroundColor: "#e26a00",
     backgroundGradientFrom: "#fff",
     backgroundGradientTo: "#fff",
-    color: (opacity = 1) => `rgba(156, 39, 176, ${opacity})`,
+    color: (opacity = 1) => `rgba(255, 50, 50, ${opacity})`,
     strokeWidth: 2, // optional, default 3
     barPercentage: 0.5,
     useShadowColorFromDataset: false, // optional
   };
 
   const data = {
-    labels: days,
+    // labels: averages.map((day) => day?.day),
+    labels: averages.map((day) => moment(day?.day).format("MMM Do")),
     datasets: [
       {
-        data: values,
-        color: (opacity = 1) => `rgba(123, 31, 162, ${opacity})`, // optional
+        data: averages.map((day) => day?.co),
+        color: (opacity = 1) => `rgba(255, 31, 31, ${opacity})`, // optional
         strokeWidth: 2, // optional
       },
     ],
@@ -41,7 +44,7 @@ const CoChart = ({ days = [], values = [] }) => {
           Cabon Monoxide
         </Text>
         <View style={{ marginTop: 5 }}>
-          {days.length > 0 && values.length > 0 ? (
+          {averages.length > 0 ? (
             <LineChart
               data={data}
               width={screenWidth}
